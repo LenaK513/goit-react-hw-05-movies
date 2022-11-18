@@ -1,9 +1,14 @@
-import { Header, List, ListItem, ListLink } from './Layout.styled';
+import { AppBar } from 'components/AppBar/AppBar';
+import { Outlet } from 'react-router-dom';
+
+import { Header } from './Layout.styled';
 
 export function Layout() {
   return (
     <Header>
-      <List>
+      <AppBar />
+      <Outlet />
+      {/* <List>
         <ListItem>
           <ListLink ListLink href="http://">
             Home
@@ -14,7 +19,7 @@ export function Layout() {
             Movies
           </ListLink>
         </ListItem>
-      </List>
+      </List> */}
     </Header>
   );
 }
