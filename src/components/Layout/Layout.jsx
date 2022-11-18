@@ -5,21 +5,11 @@ import { Header } from './Layout.styled';
 
 export function Layout() {
   return (
-    <Header>
-      <AppBar />
+    <div>
+      <Header>
+        <AppBar />
+      </Header>
       <Outlet />
-      {/* <List>
-        <ListItem>
-          <ListLink ListLink href="http://">
-            Home
-          </ListLink>
-        </ListItem>
-        <ListItem>
-          <ListLink ListLink href="http://">
-            Movies
-          </ListLink>
-        </ListItem>
-      </List> */}
-    </Header>
+    </div>
   );
 }
