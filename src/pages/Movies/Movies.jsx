@@ -22,14 +22,17 @@ export const Movies = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    setQuery(query);
-    console.log(query);
+    // setQuery(query);
+    // console.log(query);
+    if (query.trim() === '') {
+      return;
+    }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Input type="text" value={query} onChange={handleMovieName} />
-      <Btn type="submit" value="Search"></Btn>
+      <Input type="text" onSubmit={handleMovieName} />
+      <Btn type="submit" value="Search" />
     </Form>
   );
 };
