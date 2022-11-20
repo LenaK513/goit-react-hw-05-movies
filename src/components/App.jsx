@@ -4,7 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 // import { Home } from 'components/Home/Home';
 // import { fetchApi } from 'api/fetchApi';
 import { AppBar } from './AppBar/AppBar';
-import { Home } from './Home/Home';
+import { Home } from '../pages/Home/Home';
+import { Movies } from 'pages/Movies/Movies';
 
 export const App = () => {
   return (
@@ -14,9 +15,7 @@ export const App = () => {
       </nav>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/movies" element={<div>Movies</div>}></Route>
-
-        {/* </Route> */}
+        <Route path="/movies" element={<Movies />}></Route>
       </Routes>
     </div>
   );
