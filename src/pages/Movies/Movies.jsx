@@ -6,25 +6,29 @@ export const Movies = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    getMoviesBySearch(query).then(data => {
-      if (query) {
-        setMovies([data.results]);
-      }
-    });
+    if (query) {
+      getMoviesBySearch(query)
+        .then(data => {
+          setMovies([data.results]);
+        })
+        .catch(error => console.log(error.message));
+    }
   }, [query]);
 
   const handleMovieName = event => {
     setQuery(event.currentTarget.value.toLowerCase());
+    console.log(query);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
     setQuery(query);
+    console.log(query);
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Input type="text" onChange={handleMovieName} />
+      <Input type="text" value={query} onChange={handleMovieName} />
       <Btn type="submit" value="Search"></Btn>
     </Form>
   );
