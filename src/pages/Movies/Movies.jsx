@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Btn } from './Movies.styled';
+// import { Outlet } from 'react-router-dom';
 import { getMoviesBySearch } from 'api/fetchApi';
-import { NavLink } from 'react-router-dom';
+import { FormSearch } from 'components/FormSearch/FormSearch';
+import { NavItemStyled, MoviesList, MovieItem } from './Movies.styled';
+
 export const Movies = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
@@ -10,39 +12,26 @@ export const Movies = () => {
     if (query) {
       getMoviesBySearch(query)
         .then(data => {
-          setMovies([data.results]);
+          setMovies(data.results);
         })
         .catch(error => console.log(error.message));
     }
   }, [query]);
 
-  const handleMovieName = event => {
-    setQuery(event.currentTarget.value.toLowerCase());
-    // console.log(event.currentTarget);
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    // setQuery(event.currentTarget);
-    if (query.trim() === '') {
-      return;
-    }
+  const handleSubmit = query => {
+    setQuery(query);
   };
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
-        <Input type="text" onChange={handleMovieName} />
-        <Btn type="submit" value="Search" />
-      </Form>
-
-      <ul>
+      <FormSearch dataForm={handleSubmit} />
+      <MoviesList>
         {movies.map(({ id, title }) => (
-          <li key={id} id={id}>
-            <NavLink>{title}</NavLink>
-          </li>
+          <MovieItem key={id}>
+            <NavItemStyled>{title}</NavItemStyled>
+          </MovieItem>
         ))}
-      </ul>
+      </MoviesList>
     </div>
   );
 };
