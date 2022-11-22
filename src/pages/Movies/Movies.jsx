@@ -34,8 +34,8 @@ export const Movies = () => {
             </MovieItem>
           ))}
         </MoviesList>
+        <Outlet />
       </div>
-      <Outlet />
     </div>
   );
 };
