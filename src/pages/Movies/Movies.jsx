@@ -25,17 +25,15 @@ export const Movies = () => {
 
   return (
     <div>
-      <div>
-        <FormSearch dataForm={handleSubmit} />
-        <MoviesList>
-          {movies.map(({ id, title }) => (
-            <MovieItem key={id}>
-              <NavItemStyled>{title}</NavItemStyled>
-            </MovieItem>
-          ))}
-        </MoviesList>
-        <Outlet />
-      </div>
+      <FormSearch dataForm={handleSubmit} />
+      <MoviesList>
+        {movies.map(({ id, title }) => (
+          <MovieItem key={id}>
+            <NavItemStyled to={`${id}`}>{title}</NavItemStyled>
+          </MovieItem>
+        ))}
+      </MoviesList>
+      <Outlet />
     </div>
   );
 };
