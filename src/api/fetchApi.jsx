@@ -23,3 +23,10 @@ export const getMovie = async movieId => {
   );
   return response.data;
 };
+
+export const getGenres = async () => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${KEY_API}&language=en-US`
+  );
+  return response.data;
+};

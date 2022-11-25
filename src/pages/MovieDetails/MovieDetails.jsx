@@ -1,13 +1,15 @@
 import { Outlet, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getMovie } from 'api/fetchApi';
+import { getMovie, getGenres } from 'api/fetchApi';
 
 import { Wrapper, Image, Overview, Title, Text } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
   // return <div>moviedetails</div>;
   const { movieId } = useParams();
+
   const [movie, setMovie] = useState({});
+  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     // console.log(movieId);
@@ -18,27 +20,10 @@ export const MovieDetails = () => {
     }
   }, [movieId]);
 
-  function getGenres(genre_ids, maxGenresShown) {
-    const genres = JSON.parse(localStorage.getItem('genres'));
-    const genresArr = [];
-
-    for (
-      let genreIndex = 0;
-      genreIndex < maxGenresShown && genreIndex < movie.genre_ids.length;
-      genreIndex++
-    ) {
-      for (const value of genres) {
-        if (movie.genre_ids[genreIndex] === value.id) {
-          genresArr.push(value.name);
-        }
-      }
-    }
-    if (movie.genre_ids.length > maxGenresShown) {
-      genresArr.splice(maxGenresShown - 1, 1, 'Other');
-    }
-    return genresArr.join(', ');
-  }
-
+  useEffect(() => {
+    getGenres().then(setGenres);
+  }, []);
+  console.log(genres);
   return (
     <div>
       <div>
@@ -56,7 +41,7 @@ export const MovieDetails = () => {
             <Overview>Overview</Overview>
             <Text>{movie.overview}</Text>
             <h4>Genres</h4>
-            <p>{movie.genre_ids || 'No genres'}</p>
+            {/* <p>{genres.map(({ name }) => ({ name })) || 'No genres'}</p> */}
           </div>
         </Wrapper>
 
