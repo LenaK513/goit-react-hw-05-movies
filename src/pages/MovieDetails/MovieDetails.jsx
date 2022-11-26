@@ -5,7 +5,6 @@ import { getMovie } from 'api/fetchApi';
 import { Wrapper, Image, Overview, Title, Text } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
-  // return <div>moviedetails</div>;
   const { movieId } = useParams();
 
   const [movie, setMovie] = useState({});
