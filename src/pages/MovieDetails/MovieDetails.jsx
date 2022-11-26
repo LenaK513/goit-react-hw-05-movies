@@ -1,8 +1,18 @@
-import { Outlet, useParams, Link } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovie } from 'api/fetchApi';
 
-import { Wrapper, Image, Overview, Title, Text } from './MovieDetails.styled';
+import {
+  Wrapper,
+  Image,
+  Overview,
+  Title,
+  Text,
+  WrapperAddInfo,
+  TitleAdd,
+  ListForAddInfo,
+  NavItem,
+} from './MovieDetails.styled';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -41,17 +51,17 @@ export const MovieDetails = () => {
             'No genres info'}
         </div>
       </Wrapper>
-      <div>
-        <p>Additional information</p>
-        <ul>
+      <WrapperAddInfo>
+        <TitleAdd>Additional information</TitleAdd>
+        <ListForAddInfo>
           <li>
-            <Link to="cast">Cast</Link>
+            <NavItem to="cast">Cast</NavItem>
           </li>
           <li>
-            <Link to="reviews"> Reviews</Link>
+            <NavItem to="reviews"> Reviews</NavItem>
           </li>
-        </ul>
-      </div>
+        </ListForAddInfo>
+      </WrapperAddInfo>
       <Outlet />
     </div>
   );

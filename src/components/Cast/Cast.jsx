@@ -1,4 +1,4 @@
-import { Outlet, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getCast } from 'api/fetchApi';
 import { Image, List, ListItem, Text, TextName } from './Cast.styled';
@@ -24,7 +24,10 @@ export const Cast = () => {
         castList.map(({ id, name, profile_path, character }) => (
           <ListItem key={id}>
             <Image
-              src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+              src={
+                `https://image.tmdb.org/t/p/w500/${profile_path}` ||
+                `https://via.placeholder.com/100x150`
+              }
               alt={name}
             />
             <TextName>{name}</TextName>
