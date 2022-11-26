@@ -1,4 +1,4 @@
-import { Outlet, useParams, Link } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getCast } from 'api/fetchApi';
 import { Image, List, ListItem, Text, TextName } from './Cast.styled';
@@ -8,9 +8,11 @@ export const Cast = () => {
   const [castList, setCastList] = useState([]);
 
   useEffect(() => {
-    getCast(movieId)
-      .then(data => setCastList(data.cast))
-      .catch(error => console.log(error.message));
+    if (movieId) {
+      getCast(movieId)
+        .then(data => setCastList(data.cast))
+        .catch(error => console.log(error.message));
+    }
   }, [movieId]);
 
   return (

@@ -18,10 +18,6 @@ export const MovieDetails = () => {
     }
   }, [movieId]);
 
-  // useEffect(() => {
-  //   getGenres().then(setGenres);
-  // }, []);
-  // console.log(genres);
   return (
     <div>
       <div>
@@ -42,7 +38,9 @@ export const MovieDetails = () => {
             <Overview>Overview</Overview>
             <Text>{movie.overview}</Text>
             <h4>Genres</h4>
-            {/* <p>{movie.genres}</p> */}
+
+            {(movie.genres && movie.genres.map(g => g.name).join(', ')) ||
+              'No genres info'}
           </div>
         </Wrapper>
         <div>
