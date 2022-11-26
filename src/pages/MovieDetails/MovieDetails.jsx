@@ -8,7 +8,6 @@ export const MovieDetails = () => {
   const { movieId } = useParams();
 
   const [movie, setMovie] = useState({});
-  // const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     if (movieId) {
@@ -20,41 +19,38 @@ export const MovieDetails = () => {
 
   return (
     <div>
-      <div>
-        <button>Go back</button>
-        <Wrapper>
-          <Image
-            src={
-              `https://image.tmdb.org/t/p/w500/${movie.poster_path}` ||
-              `https://via.placeholder.com/200x100`
-            }
-            alt="{movie.title || movie.name || 'No title'}"
-          />
-          <div>
-            <Title>
-              {movie.title}(
-              {new Date(movie.release_date).getFullYear() || 'No info'})
-            </Title>
-            <Overview>Overview</Overview>
-            <Text>{movie.overview}</Text>
-            <h4>Genres</h4>
-
-            {(movie.genres && movie.genres.map(g => g.name).join(', ')) ||
-              'No genres info'}
-          </div>
-        </Wrapper>
+      <button>Go back</button>
+      <Wrapper>
+        <Image
+          src={
+            `https://image.tmdb.org/t/p/w500/${movie.poster_path}` ||
+            `https://via.placeholder.com/200x100`
+          }
+          alt="{movie.title || movie.name || 'No title'}"
+        />
         <div>
-          <p>Additional information</p>
-          <ul>
-            <li>
-              <Link to="cast">Cast</Link>
-            </li>
-            <li>
-              <Link to="reviews"> Reviews</Link>
-            </li>
-          </ul>
+          <Title>
+            {movie.title}(
+            {new Date(movie.release_date).getFullYear() || 'No info'})
+          </Title>
+          <Overview>Overview</Overview>
+          <Text>{movie.overview}</Text>
+          <h4>Genres</h4>
+
+          {(movie.genres && movie.genres.map(g => g.name).join(', ')) ||
+            'No genres info'}
         </div>
-        <Outlet />
+      </Wrapper>
+      <div>
+        <p>Additional information</p>
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews"> Reviews</Link>
+          </li>
+        </ul>
       </div>
       <Outlet />
     </div>
