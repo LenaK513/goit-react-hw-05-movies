@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const List = styled.ul`
   list-style: none;
+  display: flex;
 `;
 
 export const ListItem = styled.li`
@@ -12,7 +13,7 @@ export const ListItem = styled.li`
 `;
 
 export const Image = styled.img`
-  width: 100px;
+  width: 130px;
 `;
 
 export const TextName = styled.p`
