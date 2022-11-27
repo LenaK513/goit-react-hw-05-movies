@@ -9,7 +9,7 @@ export const Review = () => {
 
   useEffect(() => {
     if (movieId) {
-      getReview(movieId)
+      getReview(Number(movieId))
         .then(data => setReviews(data.results))
         // .then(data => console.log(data))
         .catch(error => console.log(error.message));

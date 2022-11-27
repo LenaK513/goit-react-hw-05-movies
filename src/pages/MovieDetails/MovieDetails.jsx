@@ -1,4 +1,4 @@
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovie } from 'api/fetchApi';
 
@@ -16,20 +16,26 @@ import {
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
-
   const [movie, setMovie] = useState({});
+  const location = useLocation();
+  const backToPageBtn = location.state?.from ?? '/movies';
+  console.log(location);
 
   useEffect(() => {
     if (movieId) {
-      getMovie(movieId)
+      getMovie(Number(movieId))
         .then(data => setMovie(data))
         .catch(error => console.log(error.message));
     }
   }, [movieId]);
 
+  if (!movie) {
+    return null;
+  }
+
   return (
     <div>
-      <button>Go back</button>
+      <Link to={backToPageBtn}>Go back</Link>
       <Wrapper>
         <Image
           src={

@@ -9,7 +9,7 @@ export const Cast = () => {
 
   useEffect(() => {
     if (movieId) {
-      getCast(movieId)
+      getCast(Number(movieId))
         .then(data => setCastList(data.cast))
         .catch(error => console.log(error.message));
     }
