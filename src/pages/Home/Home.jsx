@@ -16,7 +16,7 @@ export const Home = () => {
       <MoviesList>
         {trendMovies.map(({ id, title }) => (
           <MovieItem key={id}>
-            <NavItemStyled>{title}</NavItemStyled>
+            <NavItemStyled to={`movies/${id}`}>{title}</NavItemStyled>
           </MovieItem>
         ))}
       </MoviesList>

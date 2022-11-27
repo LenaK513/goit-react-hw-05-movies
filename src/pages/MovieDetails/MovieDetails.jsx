@@ -39,8 +39,9 @@ export const MovieDetails = () => {
       <Wrapper>
         <Image
           src={
-            `https://image.tmdb.org/t/p/w500/${movie.poster_path}` ||
-            `https://via.placeholder.com/200x100`
+            movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              : `https://via.placeholder.com/200x100`
           }
           alt="{movie.title || movie.name || 'No title'}"
         />

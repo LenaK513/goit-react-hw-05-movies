@@ -21,10 +21,14 @@ export const Cast = () => {
   return (
     <List>
       {castList.length > 0 &&
-        castList.map(({ id, name, profile_path = 'null', character }) => (
+        castList.map(({ id, name, profile_path, character }) => (
           <ListItem key={id}>
             <Image
-              src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+              src={
+                profile_path
+                  ? `https://image.tmdb.org/t/p/w500/${profile_path}`
+                  : `https://via.placeholder.com/100x150`
+              }
               alt={name}
             />
             <TextName>{name}</TextName>
@@ -34,4 +38,4 @@ export const Cast = () => {
     </List>
   );
 };
-// `https://via.placeholder.com/100x150`
+//
