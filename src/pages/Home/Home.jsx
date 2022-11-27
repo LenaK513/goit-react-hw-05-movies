@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { getTrendingMovies } from 'api/fetchApi';
+import { useState, useEffect, Suspense } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { getTrendingMovies } from 'api/fetchApi';
 import { Title, MoviesList, MovieItem, NavItemStyled } from './Home.styled';
 
 export const Home = () => {
@@ -14,15 +14,18 @@ export const Home = () => {
     <div>
       <Title>Trending Today</Title>
       <MoviesList>
-        {trendMovies.map(({ id, title }) => (
-          <MovieItem key={id}>
-            <NavItemStyled to={`movies/${id}`} state={{ from: location }}>
-              {title}
-            </NavItemStyled>
-          </MovieItem>
-        ))}
+        {trendMovies &&
+          trendMovies.map(({ id, title }) => (
+            <MovieItem key={id}>
+              <NavItemStyled to={`movies/${id}`} state={{ from: location }}>
+                {title}
+              </NavItemStyled>
+            </MovieItem>
+          ))}
       </MoviesList>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+// import { Suspense } from 'react';
 import { getMovie } from 'api/fetchApi';
 
 import {
@@ -60,16 +61,25 @@ export const MovieDetails = () => {
       </Wrapper>
       <WrapperAddInfo>
         <TitleAdd>Additional information</TitleAdd>
+
         <ListForAddInfo>
           <li>
-            <NavItem to="cast">Cast</NavItem>
+            <NavItem to="cast" state={{ from: location }}>
+              Cast
+            </NavItem>
           </li>
           <li>
-            <NavItem to="reviews"> Reviews</NavItem>
+            <NavItem to="reviews" state={{ from: location }}>
+              {' '}
+              Reviews
+            </NavItem>
           </li>
         </ListForAddInfo>
       </WrapperAddInfo>
+      {/* <Suspense fallback={<div>Loading subpage...</div>}> */}
       <Outlet />
+      {/* </Suspense> */}
     </div>
   );
 };
+// export default MovieDetails;

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { Outlet } from 'react-router-dom';
 import { getMoviesBySearch } from 'api/fetchApi';
 import { FormSearch } from 'components/FormSearch/FormSearch';
 import { NavItemStyled, MoviesList, MovieItem } from './Movies.styled';
