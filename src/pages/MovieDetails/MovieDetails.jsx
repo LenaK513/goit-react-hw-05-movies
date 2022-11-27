@@ -1,4 +1,4 @@
-import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovie } from 'api/fetchApi';
 
@@ -12,6 +12,7 @@ import {
   TitleAdd,
   ListForAddInfo,
   NavItem,
+  BtnLink,
 } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
@@ -19,7 +20,6 @@ export const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const location = useLocation();
   const backToPageBtn = location.state?.from ?? '/movies';
-  console.log(location);
 
   useEffect(() => {
     if (movieId) {
@@ -35,7 +35,7 @@ export const MovieDetails = () => {
 
   return (
     <div>
-      <Link to={backToPageBtn}>Go back</Link>
+      <BtnLink to={backToPageBtn}>⬅Go back</BtnLink>
       <Wrapper>
         <Image
           src={

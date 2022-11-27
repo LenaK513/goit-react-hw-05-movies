@@ -13,8 +13,27 @@ export const NavItem = styled(NavLink)`
   }
 `;
 
+export const BtnLink = styled(NavLink)`
+  text-decoration: none;
+  background-color: #f2efef;
+  color: #343333;
+  margin-left: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-top: 5px;
+  /* border-radius: 3px; */
+  border: 1px solid #ccc;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  &:hover,
+  &:focus {
+    background-color: #f94ae7;
+  }
+`;
+
 export const Wrapper = styled.div`
   display: flex;
+  margin-top: 4px;
 `;
 export const Image = styled.img`
   margin-right: 10px;

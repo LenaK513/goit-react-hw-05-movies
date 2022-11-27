@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 5px;
   height: 60px;
   border: 1px solid #ccc;
   box-shadow: 0px 1px 3px -1px rgba(0, 0, 0, 0.36),
