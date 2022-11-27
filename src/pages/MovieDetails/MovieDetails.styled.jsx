@@ -38,6 +38,8 @@ export const TitleAdd = styled.h4`
 
 export const Text = styled.p`
   color: #343333;
+  font-family: Roboto;
+  font-size: 18px;
 `;
 
 export const WrapperAddInfo = styled.div`

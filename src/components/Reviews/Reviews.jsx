@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getReview } from 'api/fetchApi';
+import { List, ListItem, Author, AuthorName } from './Reviews.styled';
 
 export const Review = () => {
   const { movieId } = useParams();
@@ -16,17 +17,17 @@ export const Review = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <List>
       {(reviews.length !== 0 &&
         reviews.map(({ author, content }) => (
-          <li key={author}>
-            <p>
-              <span>Author:</span> {author}
-            </p>
+          <ListItem key={author}>
+            <AuthorName>
+              <Author>Author:</Author> {author}
+            </AuthorName>
             <p>{content}</p>
-          </li>
+          </ListItem>
         ))) ||
         'There is any review for this movie'}
-    </ul>
+    </List>
   );
 };

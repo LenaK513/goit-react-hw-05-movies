@@ -21,19 +21,24 @@ export const Cast = () => {
   return (
     <List>
       {castList.length > 0 &&
-        castList.map(({ id, name, profile_path, character }) => (
-          <ListItem key={id}>
-            <Image
-              src={
-                `https://image.tmdb.org/t/p/w500/${profile_path}` ||
-                `https://via.placeholder.com/100x150`
-              }
-              alt={name}
-            />
-            <TextName>{name}</TextName>
-            <Text>{character}</Text>
-          </ListItem>
-        ))}
+        castList.map(
+          ({
+            id,
+            name,
+            profile_path = `https://via.placeholder.com/100x150`,
+            character,
+          }) => (
+            <ListItem key={id}>
+              <Image
+                src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+                alt={name}
+              />
+              <TextName>{name}</TextName>
+              <Text>{character}</Text>
+            </ListItem>
+          )
+        )}
     </List>
   );
 };
+// `https://via.placeholder.com/100x150`
