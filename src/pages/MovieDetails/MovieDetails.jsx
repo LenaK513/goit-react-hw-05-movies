@@ -19,7 +19,7 @@ export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const location = useLocation();
-  const backToPageBtn = location.state?.from ?? '/movies';
+  const backToPageBtn = location.state?.from ?? '/';
 
   useEffect(() => {
     if (movieId) {
