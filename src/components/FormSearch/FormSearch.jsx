@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Form, Input, Btn } from './FormSearch.styled';
 
 export const FormSearch = ({ dataForm }) => {
@@ -25,4 +26,9 @@ export const FormSearch = ({ dataForm }) => {
       <Btn type="submit" value="Search" />
     </Form>
   );
+};
+
+FormSearch.propTypes = {
+  handleSubmit: PropTypes.func,
+  handleMovieName: PropTypes.func,
 };

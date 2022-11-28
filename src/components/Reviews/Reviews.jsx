@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { getReview } from 'api/fetchApi';
 import { List, ListItem, Author, AuthorName } from './Reviews.styled';
 
-export const Review = () => {
+const Review = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
@@ -11,7 +11,6 @@ export const Review = () => {
     if (movieId) {
       getReview(Number(movieId))
         .then(data => setReviews(data.results))
-        // .then(data => console.log(data))
         .catch(error => console.log(error.message));
     }
   }, [movieId]);
@@ -31,4 +30,4 @@ export const Review = () => {
     </List>
   );
 };
-// export default Review;
+export default Review;

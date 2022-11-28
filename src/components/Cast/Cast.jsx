@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { getCast } from 'api/fetchApi';
 import { Image, List, ListItem, Text, TextName } from './Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [castList, setCastList] = useState([]);
 
@@ -39,4 +39,4 @@ export const Cast = () => {
   );
 };
 //
-// export default Cast;
+export default Cast;

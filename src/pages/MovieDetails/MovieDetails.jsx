@@ -1,6 +1,6 @@
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-// import { Suspense } from 'react';
+import { Suspense } from 'react';
 import { getMovie } from 'api/fetchApi';
 
 import {
@@ -16,10 +16,11 @@ import {
   BtnLink,
 } from './MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const location = useLocation();
+  console.log(location.state);
   const backToPageBtn = location.state?.from ?? '/';
 
   useEffect(() => {
@@ -34,52 +35,48 @@ export const MovieDetails = () => {
     return null;
   }
 
+  const { poster_path, title, release_date, overview, genres } = movie;
   return (
     <div>
       <BtnLink to={backToPageBtn}>⬅Go back</BtnLink>
       <Wrapper>
         <Image
           src={
-            movie.poster_path
-              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+            poster_path
+              ? `https://image.tmdb.org/t/p/w500/${poster_path}`
               : `https://via.placeholder.com/200x100`
           }
           alt="{movie.title || movie.name || 'No title'}"
         />
         <div>
           <Title>
-            {movie.title}(
-            {new Date(movie.release_date).getFullYear() || 'No info'})
+            {title}({new Date(release_date).getFullYear() || 'No info'})
           </Title>
           <Overview>Overview</Overview>
-          <Text>{movie.overview}</Text>
+          <Text>{overview}</Text>
           <h4>Genres</h4>
 
-          {(movie.genres && movie.genres.map(g => g.name).join(', ')) ||
+          {(genres && movie.genres.map(g => g.name).join(', ')) ||
             'No genres info'}
         </div>
       </Wrapper>
-      <WrapperAddInfo>
-        <TitleAdd>Additional information</TitleAdd>
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <WrapperAddInfo>
+          <TitleAdd>Additional information</TitleAdd>
 
-        <ListForAddInfo>
-          <li>
-            <NavItem to="cast" state={{ from: location }}>
-              Cast
-            </NavItem>
-          </li>
-          <li>
-            <NavItem to="reviews" state={{ from: location }}>
-              {' '}
-              Reviews
-            </NavItem>
-          </li>
-        </ListForAddInfo>
-      </WrapperAddInfo>
-      {/* <Suspense fallback={<div>Loading subpage...</div>}> */}
-      <Outlet />
-      {/* </Suspense> */}
+          <ListForAddInfo>
+            <li>
+              <NavItem to="cast">Cast</NavItem>
+            </li>
+            <li>
+              <NavItem to="reviews"> Reviews</NavItem>
+            </li>
+          </ListForAddInfo>
+        </WrapperAddInfo>
+
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
-// export default MovieDetails;
+export default MovieDetails;
