@@ -20,7 +20,6 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const location = useLocation();
-  console.log(location.state);
   const backToPageBtn = location.state?.from ?? '/';
 
   useEffect(() => {

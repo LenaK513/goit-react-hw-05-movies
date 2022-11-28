@@ -32,7 +32,7 @@ export const Movies = () => {
 
   return (
     <div>
-      <FormSearch dataForm={handleSubmit} value={query} />
+      <FormSearch dataForm={handleSubmit} />
       {movies.length > 0 && <MoviesArray movies={movies} />}
       <Outlet />
     </div>
