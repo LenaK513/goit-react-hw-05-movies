@@ -59,20 +59,20 @@ const MovieDetails = () => {
             'No genres info'}
         </div>
       </Wrapper>
+
+      <WrapperAddInfo>
+        <TitleAdd>Additional information</TitleAdd>
+
+        <ListForAddInfo>
+          <li>
+            <NavItem to="cast">Cast</NavItem>
+          </li>
+          <li>
+            <NavItem to="reviews"> Reviews</NavItem>
+          </li>
+        </ListForAddInfo>
+      </WrapperAddInfo>
       <Suspense fallback={<div>Loading subpage...</div>}>
-        <WrapperAddInfo>
-          <TitleAdd>Additional information</TitleAdd>
-
-          <ListForAddInfo>
-            <li>
-              <NavItem to="cast">Cast</NavItem>
-            </li>
-            <li>
-              <NavItem to="reviews"> Reviews</NavItem>
-            </li>
-          </ListForAddInfo>
-        </WrapperAddInfo>
-
         <Outlet />
       </Suspense>
     </div>
